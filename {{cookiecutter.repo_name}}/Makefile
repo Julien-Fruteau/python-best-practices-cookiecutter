@@ -38,7 +38,8 @@ analysis: ## Run flake8 and typecheck analysis
 	@pipenv run flake8 --exclude node_modules && \
 	 pipenv run mypy
 
-init: install-dev git-init git-config git-post-init-commit## Check prerequesites, init-repo, and set up git config
+init: install-dev git-init git-config git-post-init-commit## Install-dev, init-repo, and set up git config
+init-container: git-init git-config git-post-init-commit## init-repo, and set up git config
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

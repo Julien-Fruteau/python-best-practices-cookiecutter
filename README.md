@@ -36,10 +36,14 @@ pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --che
 
 # -------- ALTERNATIVE
 
-# NEW : Develop in a docker container using vsocde devcontainer feature, for easy collobaration :
+# NEW : Develop in a docker container using vscode devcontainer feature, for easy collobaration :
 pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout vscode-devcontainer
 
 # NB: When project is setup, open it in vscode, when prompted to reopen in container, say yes (the - 1st - container build take some time)
+
+# Open a shell in the devcontainer and run
+
+make init
 ```
 
 ## Makefile

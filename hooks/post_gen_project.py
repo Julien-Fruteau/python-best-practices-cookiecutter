@@ -11,8 +11,8 @@ def set_python_version():
         with open(file_name, "w") as f:
             f.write(contents)
 
-# def make_init():
-#     subprocess.run(["make", "init"])
+def make_init():
+    subprocess.run(["make", "init-container"])
 
 SUCCESS = "\x1b[1;32m"
 INFO = "\x1b[1;33m"
@@ -21,7 +21,7 @@ TERMINATOR = "\x1b[0m"
 
 def main():
     set_python_version()
-    # make_init()
+    make_init()
     print(SUCCESS + "Project successfully initialized" + TERMINATOR)
 
 
