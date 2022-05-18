@@ -39,7 +39,12 @@ pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter
 # NEW : Develop in a docker container using vscode devcontainer feature :
 pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout vscode-devcontainer
 
-# NB: When project is setup, open it in vscode, when prompted to reopen in container, say yes (the - 1st - container build take some time)
+# NB: 
+#  - When project setup is complete :
+#   -> make sure docker desktop is running
+#   -> open project in vscode, when prompted to reopen in container, say yes, the container will be built
+#   -> disreguard notifications caused by vscode extension being installed
+#   -> When the container build is complete, reload the windows so that vscode extensions and py packages newly installed are available
 ```
 
 ## Makefile
