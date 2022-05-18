@@ -33,6 +33,13 @@ pipx install pipenv
 
 # Use cookiecutter to create project from this template
 pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter
+
+# -------- ALTERNATIVE
+
+# NEW : Develop in a docker container using vscode devcontainer feature :
+pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout vscode-devcontainer
+
+# NB: When project is setup, open it in vscode, when prompted to reopen in container, say yes (the - 1st - container build take some time)
 ```
 
 ## Makefile
