@@ -1,0 +1,55 @@
+{
+  "name": "{{ cookiecutter.repo_name }}",
+  "version": "1.0.0",
+  "description": "{{ cookiecutter.project_name }}",
+  "directories": {
+    "module": "{{ cookiecutter.python_module_name }}",
+    "test": "test"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
+  },
+  "keywords": [
+    "python"
+  ],
+  "bugs": {
+    "url": "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}/issues"
+  },
+  "homepage": "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}#readme",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/github": "^7.2.0",
+    "semantic-release": "^17.4.7"
+  },
+  "release": {
+    "branches": "main",
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "docs/CHANGELOG.md"
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "path": "docs/CHANGELOG.md",
+                        "label": "CHANGELOG"
+                    }
+                ]
+            }
+        ]
+    ]
+  }
+}

@@ -1,10 +1,6 @@
 name: Test
 
-on: 
-  pull_request: {}
-  push:
-    branches: master
-    tags: "*"
+on: [pull_request]
 
 jobs:
   test:
@@ -22,10 +18,10 @@ jobs:
           pip install pipenv
           pipenv install --deploy --dev
 
-      - run: pipenv run isort --recursive --diff .
+      - run: pipenv run isort --diff .
       - run: pipenv run black --check .
-      - run: pipenv run flake8
-      - run: pipenv run mypy
+      - run: pipenv run mypy --install-types --non-interactive   # install missing stubs mypy in analysis will complain abo
+      - run: make analysis
       - run: pipenv run pytest --cov --cov-fail-under=100
 
   docker-image:

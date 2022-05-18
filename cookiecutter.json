@@ -1,4 +1,10 @@
 {
+  "python_version": "default",
   "project_name": "Best Practices",
-  "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}"
+  "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "python_module_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "github_user_name": "",
+  "github_organization": "{{ cookiecutter.github_user_name }}",
+  "github_user_email": "{{ cookiecutter.github_user_name.lower().replace(' ', '.').replace('-', '.')}}@gmail.com",
+  "github_host": "github.com"
 }
