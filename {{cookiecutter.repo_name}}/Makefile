@@ -18,6 +18,8 @@ git-init: ## Init repo
 	@git branch -M main
 	@echo "Set-up remote git origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
 	@git remote add origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git
+	@echo "Configure safe directory"
+	@git config --global --add safe.directory /workspaces/{{ cookiecutter.repo_name}}
 
 # run git config only when on opening dev container otherwise hooks will generate errors
 git-hooks: ## Configure git hooks from .githooks folder
