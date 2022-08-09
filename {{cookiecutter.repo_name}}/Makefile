@@ -18,6 +18,8 @@ git-init: ## Init repo
 	@git branch -M main
 	@echo "Set-up remote git origin git@{{ cookiecutter.github_host }}:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
 	@git remote add origin git@{{ cookiecutter.github_host }}:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git
+
+git-add-safe-directory: ## Add workspace to git safe directory
 	@echo "Configure safe directory"
 	@git config --global --add safe.directory /workspaces/{{ cookiecutter.repo_name}}
 
