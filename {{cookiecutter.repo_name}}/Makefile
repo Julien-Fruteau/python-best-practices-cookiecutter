@@ -35,6 +35,8 @@ git-post-init-commit: ## Git commit
 	@echo "Local: Setup Complete"
 	@echo "TODO : Create remote repo git@github.com:"{{ cookiecutter.github_organization }}"/"{{ cookiecutter.repo_name}}""
 
+git-config: git-add-safe-directory git-hooks##add workspace to safe directory, and set up hooks
+
 fmt: ## Format
 	@pipenv run isort . && \
 	 pipenv run black .
@@ -43,7 +45,7 @@ analysis: ## Run flake8 and typecheck analysis
 	@pipenv run flake8 --exclude node_modules && \
 	 pipenv run mypy
 
-init: git-init git-post-init-commit##init-repo, and set up git config
+init: git-init git-post-init-commit##init-repo, and set up git 
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
