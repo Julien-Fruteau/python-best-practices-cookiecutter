@@ -7,7 +7,7 @@ install-dev: ## Install dev dependencies
 git-init: ## Init repo
 	@echo "Initialize git repo"
 	@git init
-# git-config: ## Configure git repo
+# git-hooks: ## Configure git repo
 	@echo "Set-up local git config user name "{{ cookiecutter.github_user_name }}" and email "{{ cookiecutter.github_user_email }}""
 	@git config --local user.name "{{ cookiecutter.github_user_name }}"
 	@git config --local user.email "{{ cookiecutter.github_user_email }}"
@@ -19,7 +19,8 @@ git-init: ## Init repo
 	@echo "Set-up remote git origin git@github.com:"{{ cookiecutter.github_organization }}"/"{{ cookiecutter.repo_name}}".git"
 	@git remote add origin git@github.com:"{{ cookiecutter.github_organization }}"/"{{ cookiecutter.repo_name}}".git
 
-git-config: ## Configure git hooks from .githooks folder
+# run git config only when on opening dev container otherwise hooks will generate errors
+git-hooks: ## Configure git hooks from .githooks folder
 	@echo "Configure git pre-commit hooks with local .githooks folder"
 	@git config core.hooksPath .githooks
 
@@ -38,7 +39,7 @@ analysis: ## Run flake8 and typecheck analysis
 	@pipenv run flake8 --exclude node_modules && \
 	 pipenv run mypy
 
-init: git-init git-config git-post-init-commit##init-repo, and set up git config
+init: git-init git-post-init-commit##init-repo, and set up git config
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
