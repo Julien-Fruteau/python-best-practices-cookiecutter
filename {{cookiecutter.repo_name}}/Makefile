@@ -16,8 +16,8 @@ git-init: ## Init repo
 	@git commit -m "first commit"
 	@echo "Switch from master to main branch"
 	@git branch -M main
-	@echo "Set-up remote git origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
-	@git remote add origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git
+	@echo "Set-up remote git origin git@{{ cookiecutter.github_host }}:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
+	@git remote add origin git@{{ cookiecutter.github_host }}:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git
 	@echo "Configure safe directory"
 	@git config --global --add safe.directory /workspaces/{{ cookiecutter.repo_name}}
 
