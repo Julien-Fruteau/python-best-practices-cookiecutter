@@ -9,15 +9,15 @@ git-init: ## Init repo
 	@git init
 # git-hooks: ## Configure git repo
 	@echo "Set-up local git config user name "{{ cookiecutter.github_user_name }}" and email "{{ cookiecutter.github_user_email }}""
-	@git config --local user.name "{{ cookiecutter.github_user_name }}"
-	@git config --local user.email "{{ cookiecutter.github_user_email }}"
+	@git config --local user.name {{ cookiecutter.github_user_name }}
+	@git config --local user.email {{ cookiecutter.github_user_email }}
 	@echo "Commit README"
 	@git add README.md
 	@git commit -m "first commit"
 	@echo "Switch from master to main branch"
 	@git branch -M main
-	@echo "Set-up remote git origin git@github.com:"{{ cookiecutter.github_organization }}"/"{{ cookiecutter.repo_name}}".git"
-	@git remote add origin git@github.com:"{{ cookiecutter.github_organization }}"/"{{ cookiecutter.repo_name}}".git
+	@echo "Set-up remote git origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git"
+	@git remote add origin git@github.com:{{ cookiecutter.github_organization }}/{{ cookiecutter.repo_name}}.git
 
 # run git config only when on opening dev container otherwise hooks will generate errors
 git-hooks: ## Configure git hooks from .githooks folder
