@@ -9,9 +9,16 @@ python_version = "{python_version}"
 [packages]
 
 [dev-packages]
-black = "*"
 flake8 = "*"
 isort = "*"
 mypy = "*"
 pytest = "*"
 pytest-cov = "*"
+ipykernel = "*"
+autopep8 = "*"
+pylint = "*"
+notebook = "*"
+pytest-asyncio = "*"
+black = "*"
+pytest-mock = "*"
+mock = "*"
