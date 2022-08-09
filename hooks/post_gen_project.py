@@ -12,7 +12,7 @@ def set_python_version():
             f.write(contents)
 
 def make_init():
-    subprocess.run(["make", "init-container"])
+    subprocess.run(["make", "init"])
 
 SUCCESS = "\x1b[1;32m"
 INFO = "\x1b[1;33m"
