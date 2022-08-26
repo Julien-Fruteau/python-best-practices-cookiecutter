@@ -3,7 +3,7 @@ import subprocess
 
 def set_python_version():
     python_version = str(sys.version_info.major) + "." + str(sys.version_info.minor) if "{{cookiecutter.python_version}}" == "default" else "{{cookiecutter.python_version}}"
-    file_names = ["Dockerfile", "Pipfile", ".github/workflows/test.yml", "Makefile", ".devcontainer/Dockerfile", ".devcontainer/devcontainer.json"]
+    file_names = ["Pipfile", "Makefile", ".devcontainer/Dockerfile", ".devcontainer/devcontainer.json"]
     for file_name in file_names:
         with open(file_name) as f:
             contents = f.read()

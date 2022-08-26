@@ -10,13 +10,3 @@ ENV PYTHONFAULTHANDLER 1
 RUN pip install pipenv
 RUN apt-get update && apt-get install -y --no-install-recommends gcc graphviz
 
-# COPY Pipfile .
-# COPY Pipfile.lock .
-# RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
-
-RUN useradd -s /bin/bash --create-home appuser
-WORKDIR /home/appuser
-USER appuser
-
-# COPY Pipfile .
-# RUN pipenv install --dev

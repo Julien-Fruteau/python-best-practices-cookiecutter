@@ -31,29 +31,10 @@ python3 -m pipx ensurepath
 # Install pipenv using pipx
 pipx install pipenv
 
-# Use cookiecutter to create project from this template
-pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout vscode-devcontainer
-
-# -------- ALTERNATIVE
-
-# NEW : Develop in a docker container using vscode devcontainer feature, for easy collobaration :
-pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout vscode-devcontainer
-
-# NB: 
-#  - When project setup is complete :
-#   -> make sure docker desktop is running
-#   -> open project in vscode, when prompted to reopen in container, say yes, the container will be built
-#   -> disreguard notifications caused by vscode extension being installed
-#   -> When the container build is complete, reload the windows so that vscode extensions and py packages newly installed are available
+# Explore code in jupyter notebook running in a docker container using vscode devcontainer feature :
+pipx run cookiecutter gh:Julien-Fruteau/python-best-practices-cookiecutter --checkout jupyter-vscode-devcontainer
 ```
 
-## Makefile
-
-This forks started as the wish to be able to auto-commit the code formatting, which cannot be done using pip package pre-commit.
-
-Hence a git hook pre-commit is used instead and set up thanks to a Makefile.
-
-The Makefile is also used by cookiecutter to init the local git repository, prepare the remote github repo configuration, and install dev dependencies.
 
 ## Cookiecutter variables
 
@@ -64,39 +45,3 @@ The Makefile is also used by cookiecutter to init the local git repository, prep
 - **github_organization** : default to user name but can be replaced if you are targetting an organization repo usage
 - **github_user_email** : used to set-up your local git config
 - **github_host** : used to configure the github remote origin hostname. Defaults to github.com. This can be useful if you use a [ssh-config-file](https://linuxize.com/post/using-the-ssh-config-file/) in order to address multiple github account from a single localhost (github does not allow the same public ssh key to be used by multiple accounts)
-
-## Repo Usage
-
-- Create an empty github repository which has the **repo_name** set up in cookiecutter
-- The 1st commit and chore(setup) commits are made on the main branch and ready to be pushed once you have a created the empty github repository.
-  > the push will trigger the release pipeline but intentionnaly will not create a release.
-- push main to origin
-
-  ```bash
-  git push -u  origin main
-  ```
-
-- The consecutive dev should be made on a separate branch corresponding to the feature develop
-- Create an switch to new branch
-
-  ```bash
-  git checkout -b feat--<my-new-feature>
-  ```
-
-- When ready, push the new branch. The test on the remote will start
-
-  ```bash
-  git push origin feat--<my-new-feature>
-  ```
-
-- Open a pull request, when tests are ok, merge it to the main branch
-- A new release will be created
-- Repeat for new features, fixes on new branch
-
-### Main branch protection
-
-- The development suggestion made should coincide with the **main branch being protected**, in order to avoid unexpected commit to the remote main branch
-- As such the following github Settings/Branches configuration is advised :
-![Image](branch_protection.png)
-
-> If you're the only administrator you won't be able to merge the PR. You can uncheck 'include administrators' to do the merge, but remember by you doing so, you are also able to push directly to the main branch (this is a warning in case you want to *let it unchecked*).
